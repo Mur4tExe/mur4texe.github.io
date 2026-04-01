@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cros Bio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #100d07 0%, #1a1408 50%, #0f0b04 100%);
+      font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+      color: #fdf3dc;
+      overflow-x: hidden;
+    }
+
+    /* ── Partiküller ── */
+    #particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .dot {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+      animation: blink var(--dur) var(--delay) infinite ease-in-out;
+    }
+
+    @keyframes blink {
+      0%   { opacity: 0; }
+      10%  { opacity: 1; }
+      35%  { opacity: 0.85; }
+      55%  { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* ── Sayfa içeriği ── */
+    #app {
+      position: relative;
+      z-index: 1;
+    }
+
+
+    /* Profil kartı */
+    .card {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Avatar */
+    .avatar-ring {
+      margin-top: 40px;
+      position: relative;
+      z-index: 2;
+      width: 116px;
+      height: 116px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, #d4a843, #e8c97a, #f0dba0);
+      box-shadow: 0 0 28px rgba(212,168,67,0.5);
+    }
+
+    .avatar-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 3px solid #100d07;
+    }
+
+    /* İsim */
+    .name {
+      margin-top: 16px;
+      font-size: 26px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #e8c97a, #f0dba0, #fdf3dc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    /* Bio kutusu */
+    .bio-box {
+      margin-top: 14px;
+      width: 100%;
+      background: rgba(212,168,67,0.07);
+      border: 1px solid rgba(212,168,67,0.18);
+      border-radius: 16px;
+      padding: 16px 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .bio-text {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(240,219,160,0.55);
+    }
+
+    .bio-text strong {
+      color: #e8c97a;
+      font-weight: 600;
+    }
+
+    /* Linkler */
+    .links {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .link-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      background: rgba(232,201,122,0.06);
+      border: 1px solid rgba(232,201,122,0.12);
+      color: #fdf3dc;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      backdrop-filter: blur(8px);
+    }
+
+    .link-item:hover {
+      background: rgba(232,201,122,0.13);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(212,168,67,0.20);
+    }
+
+    .link-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .link-label { flex: 1; text-align: left; }
+
+    .link-arrow { opacity: 0.35; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Partiküller -->
+  <div id="particles"></div>
+
+  <!-- İçerik -->
+  <div id="app">
+    <!-- Kart -->
+    <div class="card">
+      <!-- Avatar -->
+      <div class="avatar-ring">
+        <img class="avatar-img" src="pp.jpg" alt="Profil" />
+      </div>
+
+      <!-- İsim -->
+      <h1 class="name">Cros</h1>
+
+      <!-- Bio Kutusu -->
+      <div class="bio-box">
+        <p class="bio-text">
+          Merhaba, ben <strong>Cros</strong> — sanalda hobi olarak bot geliştiriyorum.
+          Bir zamanlar tasarımla da uğraştım, hâlâ arada bir yaratıcı şeyler çıkarıyorum.
+        </p>
+      </div>
+
+      <!-- Ayırıcı -->
+      <div class="divider"></div>
+
+      <!-- Linkler -->
+      <div class="links">
+
+        <a class="link-item" href="https://github.com/Mur4tExe" target="_blank" rel="noopener noreferrer">
+          <span class="link-icon" style="background: linear-gradient(135deg,#b5860e,#d4a843);">
+            <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </span>
+          <span class="link-label">GitHub</span>
+          <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+
+        <a class="link-item" href="https://www.reddit.com/u/muratexe" target="_blank" rel="noopener noreferrer">
+          <span class="link-icon" style="background: linear-gradient(135deg,#c44a1a,#e8602a);">
+            <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
+              <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+            </svg>
+          </span>
+          <span class="link-label">Reddit</span>
+          <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+
+        <a class="link-item" href="https://discord.gg/murat7z" target="_blank" rel="noopener noreferrer">
+          <span class="link-icon" style="background: linear-gradient(135deg,#4752c4,#7289da);">
+            <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
+          </span>
+          <span class="link-label">Discord</span>
+          <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+
+        <a class="link-item" href="https://t.me/CrosOrj" target="_blank" rel="noopener noreferrer">
+          <span class="link-icon" style="background: linear-gradient(135deg,#0a6fa0,#1a9fd4);">
+            <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+            </svg>
+          </span>
+          <span class="link-label">Telegram Profil</span>
+          <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+
+        <a class="link-item" href="https://t.me/CrosBio" target="_blank" rel="noopener noreferrer">
+          <span class="link-icon" style="background: linear-gradient(135deg,#065d80,#0f8fbf);">
+            <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+            </svg>
+          </span>
+          <span class="link-label">Telegram Bio</span>
+          <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── Partiküller ──
+    const container = document.getElementById('particles');
+    const COLORS = [
+      'rgba(212,168,67,VAR)',
+      'rgba(232,201,122,VAR)',
+      'rgba(240,219,160,VAR)',
+      'rgba(253,243,220,VAR)',
+      'rgba(180,140,50,VAR)',
+    ];
+
+    for (let i = 0; i < 58; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+
+      const r     = 0.8 + Math.random() * 2;
+      const color = COLORS[Math.floor(Math.random() * COLORS.length)]
+                      .replace('VAR', (0.55 + Math.random() * 0.45).toFixed(2));
+      const dur   = (1.0 + Math.random() * 3).toFixed(2);
+      const delay = (Math.random() * 5).toFixed(2);
+
+      dot.style.left   = (Math.random() * 100) + '%';
+      dot.style.top    = (Math.random() * 100) + '%';
+      dot.style.width  = (r * 2) + 'px';
+      dot.style.height = (r * 2) + 'px';
+      dot.style.background  = color;
+      dot.style.boxShadow   = `0 0 ${r * 4}px ${color}`;
+      dot.style.setProperty('--dur',   dur   + 's');
+      dot.style.setProperty('--delay', delay + 's');
+
+      container.appendChild(dot);
+    }
+  </script>
+
+</body>
+</html>
